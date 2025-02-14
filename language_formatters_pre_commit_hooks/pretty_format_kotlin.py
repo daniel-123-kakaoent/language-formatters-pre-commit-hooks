@@ -120,6 +120,10 @@ def run_ktfmt(
     ktfmt_args = ["--set-exit-if-changed"]
     if ktfmt_style is not None:
         ktfmt_args.append(f"--{ktfmt_style}-style")
+
+    max_line_length = 120
+    ktfmt_args.append(f"--max-line-length={max_line_length}")
+    
     if not autofix:
         ktfmt_args.append("--dry-run")
     return_code, _, _ = run_command(
